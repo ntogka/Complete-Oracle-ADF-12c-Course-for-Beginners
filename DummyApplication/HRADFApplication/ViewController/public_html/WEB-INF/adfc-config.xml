@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <metadata-resource id="__1">/WEB-INF/adfc-config1.xml</metadata-resource>
+  <view id="departments">
+    <page>/oldPages/departments.jsf</page>
+  </view>
+  <view id="employess">
+    <page>/oldPages/employess.jsf</page>
+  </view>
+  <control-flow-rule id="__5">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>emp</from-outcome>
+      <to-activity-id>employess</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>dept</from-outcome>
+      <to-activity-id>departments</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+</adfc-config>

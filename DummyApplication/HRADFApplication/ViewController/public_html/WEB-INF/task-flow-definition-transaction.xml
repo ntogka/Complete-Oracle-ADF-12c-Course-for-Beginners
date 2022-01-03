@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-definition-transaction">
+    <default-activity>CreateInsert</default-activity>
+    <transaction>
+      <new-transaction/>
+    </transaction>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>dept</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="newDept">
+      <page>/oldPages/newDept.jsff</page>
+      <train-stop>
+        <display-name>New Department</display-name>
+      </train-stop>
+    </view>
+    <view id="newEmps">
+      <page>/oldPages/newEmps.jsff</page>
+      <train-stop>
+        <display-name>Employees</display-name>
+      </train-stop>
+    </view>
+    <view id="newDeptSummary">
+      <page>/oldPages/newDeptSummary.jsff</page>
+      <train-stop>
+        <display-name>Summary</display-name>
+      </train-stop>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="taskFlowReturn2">
+      <outcome>
+        <name>taskFlowReturn2</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <train/>
+    <control-flow-rule id="__1">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>dept</from-outcome>
+        <to-activity-id>newDept</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>commit</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>rollback</from-outcome>
+        <to-activity-id>taskFlowReturn2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

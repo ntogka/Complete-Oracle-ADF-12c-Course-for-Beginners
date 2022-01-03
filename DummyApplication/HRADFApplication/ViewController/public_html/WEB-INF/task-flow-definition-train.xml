@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-definition-train">
+    <default-activity>departmentTrain</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="departmentTrain">
+      <page>/oldPages/departmentTrain.jsff</page>
+      <train-stop>
+        <display-name>Departments</display-name>
+      </train-stop>
+    </view>
+    <view id="employeeTrain">
+      <page>/oldPages/employeeTrain.jsff</page>
+      <train-stop>
+        <display-name>Employees</display-name>
+      </train-stop>
+    </view>
+    <task-flow-call id="task-flow-definition-bounded">
+      <task-flow-reference>
+        <document>/WEB-INF/task-flow-definition-bounded.xml</document>
+        <id>task-flow-definition-bounded</id>
+      </task-flow-reference>
+      <train-stop>
+        <display-name>Next Flow</display-name>
+      </train-stop>
+    </task-flow-call>
+    <train/>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

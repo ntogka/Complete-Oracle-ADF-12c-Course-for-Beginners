@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1">
+    <af:button text="Employees" id="b1" action="emp"/>
+    <af:table value="#{bindings.DepartmentsView1.collectionModel}" var="row"
+              rows="#{bindings.DepartmentsView1.rangeSize}"
+              emptyText="#{bindings.DepartmentsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.DepartmentsView1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.DepartmentsView1.rangeSize}"
+              filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}" filterVisible="true"
+              queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1">
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
+        <af:outputText value="#{row.DepartmentId}" shortDesc="#{bindings.DepartmentsView1.hints.DepartmentId.tooltip}"
+                       id="ot1">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.DepartmentId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.DepartmentName.label}" id="c2">
+        <af:outputText value="#{row.DepartmentName}"
+                       shortDesc="#{bindings.DepartmentsView1.hints.DepartmentName.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.ManagerId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.ManagerId.label}" id="c3">
+        <af:outputText value="#{row.ManagerId}" shortDesc="#{bindings.DepartmentsView1.hints.ManagerId.tooltip}"
+                       id="ot3">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.ManagerId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.LocationId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.LocationId.label}" id="c4">
+        <af:outputText value="#{row.LocationId}" shortDesc="#{bindings.DepartmentsView1.hints.LocationId.tooltip}"
+                       id="ot4">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.TLocationName.name}" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.TLocationName.label}" filterable="true" id="c5">
+        <af:outputText value="#{row.TLocationName}" shortDesc="#{bindings.DepartmentsView1.hints.TLocationName.tooltip}"
+                       id="ot5"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.TFirstName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.TFirstName.label}" id="c6">
+        <af:outputText value="#{row.TFirstName}" shortDesc="#{bindings.DepartmentsView1.hints.TFirstName.tooltip}"
+                       id="ot6"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.DepartmentsView1.hints.TLastName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.DepartmentsView1.hints.TLastName.label}" id="c7">
+        <af:outputText value="#{row.TLastName}" shortDesc="#{bindings.DepartmentsView1.hints.TLastName.tooltip}"
+                       id="ot7"/>
+      </af:column>
+    </af:table>
+  </af:panelGroupLayout>
+</ui:composition>

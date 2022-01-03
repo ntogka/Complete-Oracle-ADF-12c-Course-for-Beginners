@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1">
+    <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="t1"/>
+    <af:panelFormLayout id="pfl1">
+      <af:inputText value="#{bindings.DepartmentId.inputValue}" label="#{bindings.DepartmentId.hints.label}"
+                    required="#{bindings.DepartmentId.hints.mandatory}"
+                    columns="#{bindings.DepartmentId.hints.displayWidth}"
+                    maximumLength="#{bindings.DepartmentId.hints.precision}"
+                    shortDesc="#{bindings.DepartmentId.hints.tooltip}" id="it1">
+        <f:validator binding="#{bindings.DepartmentId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentId.format}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.DepartmentName.inputValue}" label="#{bindings.DepartmentName.hints.label}"
+                    required="#{bindings.DepartmentName.hints.mandatory}"
+                    columns="#{bindings.DepartmentName.hints.displayWidth}"
+                    maximumLength="#{bindings.DepartmentName.hints.precision}"
+                    shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it2">
+        <f:validator binding="#{bindings.DepartmentName.validator}"/>
+      </af:inputText>
+      <af:inputComboboxListOfValues id="managerIdId" popupTitle="Search and Select: #{bindings.ManagerId.hints.label}"
+                                    value="#{bindings.ManagerId.inputValue}" label="#{bindings.ManagerId.hints.label}"
+                                    model="#{bindings.ManagerId.listOfValuesModel}"
+                                    required="#{bindings.ManagerId.hints.mandatory}"
+                                    columns="#{bindings.ManagerId.hints.displayWidth}"
+                                    shortDesc="#{bindings.ManagerId.hints.tooltip}">
+        <f:validator binding="#{bindings.ManagerId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.ManagerId.format}"/>
+      </af:inputComboboxListOfValues>
+      <af:inputListOfValues id="locationIdId" popupTitle="Search and Select: #{bindings.LocationId.hints.label}"
+                            value="#{bindings.LocationId.inputValue}" label="#{bindings.LocationId.hints.label}"
+                            model="#{bindings.LocationId.listOfValuesModel}"
+                            required="#{bindings.LocationId.hints.mandatory}"
+                            columns="#{bindings.LocationId.hints.displayWidth}"
+                            shortDesc="#{bindings.LocationId.hints.tooltip}">
+        <f:validator binding="#{bindings.LocationId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.LocationId.format}"/>
+      </af:inputListOfValues>
+      <af:inputText value="#{bindings.TLocationName.inputValue}" label="#{bindings.TLocationName.hints.label}"
+                    required="#{bindings.TLocationName.hints.mandatory}"
+                    columns="#{bindings.TLocationName.hints.displayWidth}"
+                    maximumLength="#{bindings.TLocationName.hints.precision}"
+                    shortDesc="#{bindings.TLocationName.hints.tooltip}" partialTriggers="locationIdId" id="it3">
+        <f:validator binding="#{bindings.TLocationName.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.TFirstName.inputValue}" label="#{bindings.TFirstName.hints.label}"
+                    required="#{bindings.TFirstName.hints.mandatory}"
+                    columns="#{bindings.TFirstName.hints.displayWidth}"
+                    maximumLength="#{bindings.TFirstName.hints.precision}"
+                    shortDesc="#{bindings.TFirstName.hints.tooltip}" partialTriggers="managerIdId" id="it4">
+        <f:validator binding="#{bindings.TFirstName.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.TLastName.inputValue}" label="#{bindings.TLastName.hints.label}"
+                    required="#{bindings.TLastName.hints.mandatory}" columns="#{bindings.TLastName.hints.displayWidth}"
+                    maximumLength="#{bindings.TLastName.hints.precision}"
+                    shortDesc="#{bindings.TLastName.hints.tooltip}" partialTriggers="managerIdId" id="it5">
+        <f:validator binding="#{bindings.TLastName.validator}"/>
+      </af:inputText>
+    </af:panelFormLayout>
+  </af:panelGroupLayout>
+</ui:composition>

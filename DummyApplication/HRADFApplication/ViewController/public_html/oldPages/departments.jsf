@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="Departments" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:button text="Go to Employees" id="b1" action="emp"/>
+    </af:form>
+  </af:document>
+</f:view>

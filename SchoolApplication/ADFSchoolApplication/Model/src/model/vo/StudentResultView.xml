@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StudentResultView"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="StaticYearView1"
+    ViewObjectName="model.staticvo.StaticYearView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StaticGradeView1"
+    ViewObjectName="model.staticvo.StaticGradeView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StaticResultView1"
+    ViewObjectName="model.staticvo.StaticResultView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ResultYear"
+    ListVOName="StaticYearView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ResultYear"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="YearNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="YearNumber"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_GradeNumber"
+    ListVOName="StaticGradeView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GradeNumber"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="GradeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="GradeDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_FinalResult"
+    ListVOName="StaticResultView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FinalResult"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ResultId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ResultDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="StudentResult"
+    Entity="model.eo.StudentResult"/>
+  <ViewAttribute
+    Name="StudentFk"
+    PrecisionRule="true"
+    EntityAttrName="StudentFk"
+    EntityUsage="StudentResult"
+    AliasName="STUDENT_FK"/>
+  <ViewAttribute
+    Name="ResultYear"
+    PrecisionRule="true"
+    EntityAttrName="ResultYear"
+    EntityUsage="StudentResult"
+    AliasName="RESULT_YEAR"
+    LOVName="LOV_ResultYear">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GradeNumber"
+    PrecisionRule="true"
+    EntityAttrName="GradeNumber"
+    EntityUsage="StudentResult"
+    AliasName="GRADE_NUMBER"
+    LOVName="LOV_GradeNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FinalResult"
+    PrecisionRule="true"
+    EntityAttrName="FinalResult"
+    EntityUsage="StudentResult"
+    AliasName="FINAL_RESULT"
+    LOVName="LOV_FinalResult">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+</ViewObject>

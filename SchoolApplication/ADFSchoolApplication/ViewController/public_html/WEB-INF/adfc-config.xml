@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="dashboard">
+    <page>/dashboard.jsf</page>
+  </view>
+  <view id="classToTeacher">
+    <page>/classToTeacher.jsf</page>
+  </view>
+  <view id="studentToClass">
+    <page>/studentToClass.jsf</page>
+  </view>
+  <view id="studentResults">
+    <page>/studentResults.jsf</page>
+  </view>
+  <view id="searchTeacher">
+    <page>/searchTeacher.jsf</page>
+  </view>
+  <view id="searchStudent">
+    <page>/searchStudent.jsf</page>
+  </view>
+  <view id="teachers">
+    <page>/teachers.jsf</page>
+  </view>
+  <view id="students">
+    <page>/students.jsf</page>
+  </view>
+  <view id="classrooms">
+    <page>/classrooms.jsf</page>
+  </view>
+  <view id="index">
+    <page>/index.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>searchStudent</from-outcome>
+      <to-activity-id>searchStudent</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>dashboard</from-outcome>
+      <to-activity-id>dashboard</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>searchTeacher</from-outcome>
+      <to-activity-id>searchTeacher</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>teacher</from-outcome>
+      <to-activity-id>teachers</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome>students</from-outcome>
+      <to-activity-id>students</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__7">
+      <from-outcome>studentResults</from-outcome>
+      <to-activity-id>studentResults</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__8">
+      <from-outcome>classToTeacher</from-outcome>
+      <to-activity-id>classToTeacher</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome>studentToClass</from-outcome>
+      <to-activity-id>studentToClass</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>classrooms</from-outcome>
+      <to-activity-id>classrooms</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__13">
+      <from-outcome>index</from-outcome>
+      <to-activity-id>index</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__11">
+    <managed-bean-name>teacher</managed-bean-name>
+    <managed-bean-class>view.bean.TeacherBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__12">
+    <managed-bean-name>student</managed-bean-name>
+    <managed-bean-class>view.bean.StudentsBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>login</managed-bean-name>
+    <managed-bean-class>view.bean.LoginBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

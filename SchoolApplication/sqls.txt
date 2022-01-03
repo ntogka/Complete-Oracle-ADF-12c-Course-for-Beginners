@@ -1,0 +1,35 @@
+Right hand side:
+--------------------
+select * from 
+(select count(*) as number_of_teachers from teachers) ,
+(select count(*) as number_of_students from students) ,
+(select count(*) as number_of_classes from classrooms),
+(select count(*) as number_classes_grade1 from classrooms where grade_number = 'G1'),
+(select count(*) as number_classes_grade2 from classrooms where grade_number = 'G2'),
+(select count(*) as number_classes_grade3 from classrooms where grade_number = 'G3'),
+(select count(*) as number_classes_grade4 from classrooms where grade_number = 'G4'),
+(select count(*) as number_classes_grade5 from classrooms where grade_number = 'G5'),
+(select count(*) as number_classes_grade6 from classrooms where grade_number = 'G6'),
+(select count(*) as pass_students from STUDENT_RESULT where STUDENT_RESULT.FINAL_RESULT = 'pass' and STUDENT_RESULT.RESULT_YEAR =(select (EXTRACT( YEAR FROM sysdate) - 1) from dual)),
+(select count(*) as fail_students from STUDENT_RESULT where STUDENT_RESULT.FINAL_RESULT = 'fail' and STUDENT_RESULT.RESULT_YEAR =(select (EXTRACT( YEAR FROM sysdate) - 1) from dual));
+
+----------------------------
+Graph 1:
+
+select count(student_fk), classroom_fk from STUDENT_CLASS GROUP BY classroom_fk order by CLASSROOM_FK asc;
+
+-----------------
+Graph 2:
+
+select count(teacher_fk), classroom_fk from TEACHER_CLASSES GROUP BY classroom_fk order by CLASSROOM_FK asc;
+
+------------------------------
+
+Guage 3:
+
+select ((select count(*) as pass_students from STUDENT_RESULT where STUDENT_RESULT.FINAL_RESULT = 'pass' and STUDENT_RESULT.RESULT_YEAR =(select (EXTRACT( YEAR FROM sysdate) - 1) from dual)) / (select count(*) from STUDENTS)) * 100 as avg_pass from dual; 
+
+-------------------------------
+
+Graph 4:
+select count(STUDENT_CLASS.student_fk), CLASSROOMS.grade_number from STUDENT_CLASS, CLASSROOMS where CLASSROOMS.ROOM_NUMBER = STUDENT_CLASS.CLASSROOM_FK GROUP BY CLASSROOMS.grade_number order by CLASSROOMS.grade_number asc;
